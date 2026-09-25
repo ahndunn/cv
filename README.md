@@ -58,6 +58,17 @@ To check if new versions exist without modifying your environment:
 ./scripts/check_updates.sh
 ```
 
+### 3. Regenerate CV PDFs (Without AI Agent)
+When `cv-writer` is updated or when adjusting template/styling rules, you can directly recompile any `cv.pdf` from its `cv.json`:
+```bash
+# Recompile a specific variant
+./scripts/regenerate_cvs.sh cvs/general-ai-engineer
+
+# Recompile all existing variants under cvs/
+./scripts/regenerate_cvs.sh --all
+```
+
+
 ---
 
 ## Agent Usage & Workflows
