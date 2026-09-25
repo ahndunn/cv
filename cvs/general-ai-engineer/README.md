@@ -24,7 +24,7 @@ This is the canonical general-purpose CV compiled directly from the master profi
 - **Core Skills**: AI & LLM Frameworks, Languages (Python, Java, Rust, SQL), Databases & Message Queues, Infrastructure & DevOps.
 - **Education, Certifications & Honors**:
   - B.S. in Computer Science (UIT, VNU-HCM)
-  - NVIDIA AI Anomaly Detection Certification
+  - Nvidia Certificate of Competency — AI for Anomaly Detection (NVIDIA)
   - 2nd Place - UIT Data Science Challenge 2024
 
 ## Output Files

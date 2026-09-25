@@ -1,35 +1,38 @@
 {
-  "contact": {
-    "name": "Anh-Dung Huynh",
-    "phone": "+84 327150072",
-    "email": "ahndunn@gmail.com",
-    "github": "ahndunn",
-    "linkedin": "variphx",
-    "website": null,
-    "current_location": "Nha Trang, Vietnam (Relocating to Ho Chi Minh City)"
-  },
   "background": {
-    "summary": "AI Engineer specializing in NLP, TTS, LLM applications (LangChain, LangGraph), and high-reliability backend systems (Python, Java, modern databases, message queues). Experienced in developing and deploying production AI-applied products, vector search pipelines, and microservices.",
+    "awards": [
+      {
+        "date": "2024",
+        "summary": "Solved multi-modal sarcasm detection on social media by conducting comprehensive ablation studies on LLM latent features (ViSoBERT, CafeBERT, GPT families) paired with custom pooling strategies and classification heads.",
+        "title": "2nd Place - UIT Data Science Challenge 2024"
+      }
+    ],
+    "certifications": [
+      {
+        "date": "",
+        "id": "cert-nvidia-anomaly",
+        "issuer": "NVIDIA",
+        "name": "Nvidia Certificate of Competency \u2014 AI for Anomaly Detection"
+      }
+    ],
     "education": [
       {
-        "id": "edu-uit",
-        "institution": "University of Information Technology, VNU-HCM",
-        "degree": "B.S. in Computer Science",
         "dates": "Sept 2022 -- Sept 2025",
+        "degree": "B.S. in Computer Science",
         "highlights": [
           "2nd Place - UIT Data Science Challenge 2024"
-        ]
+        ],
+        "id": "edu-uit",
+        "institution": "University of Information Technology, VNU-HCM"
       }
     ],
     "experience": [
       {
-        "id": "comp-fpt",
         "company": "FPT Software",
+        "id": "comp-fpt",
         "location": "Vietnam",
         "roles": [
           {
-            "id": "role-fpt-junior-ai",
-            "title": "AI Engineer",
             "dates": "Sept 2025 -- Present",
             "highlights": [
               "Led a 5-person AI development team, collaborating with PM, PO, and external vendors across iterative delivery cycles to deploy enterprise AI automation systems.",
@@ -38,35 +41,55 @@
               "Engineered an asynchronous, message-driven backend backbone with RabbitMQ, eliminating synchronous API bottlenecks and scaling concurrent throughput under load.",
               "Solo-designed an agentic orchestration platform in Java (Spring Boot) featuring a declarative dynamic tool-dependency graph that calculates shortest execution paths based on parameter availability, context history, and vector retrieval (Qdrant).",
               "Enforced enterprise-grade reliability using Pydantic validation, structured exception hierarchies, distributed tracing, and centralized logging across Python and Java microservices."
-            ]
+            ],
+            "id": "role-fpt-junior-ai",
+            "title": "AI Engineer"
           }
         ]
       },
       {
-        "id": "comp-hpt",
         "company": "HPT Corporation",
+        "id": "comp-hpt",
         "location": "Ho Chi Minh City, Vietnam",
         "roles": [
           {
-            "id": "role-hpt-intern-ai",
-            "title": "AI Engineer Intern",
             "dates": "Jan 2025 -- Jun 2025",
             "highlights": [
               "Conducted research and development for Legal NLP, designing high-precision RAG pipelines and domain-specific Named Entity Recognition (NER).",
               "Trained domain-adapted NER models using PyTorch and Hugging Face transformers, utilizing synthetic data augmentation to resolve severe class imbalance.",
               "Designed semantic chunking and intelligent document segmentation strategies to optimize retrieval relevance across complex legal corpora.",
               "Conducted controlled ablation experiments comparing embedding models and architectures, benchmarking precision, recall, F1, and inference latency for R&D leadership."
-            ]
+            ],
+            "id": "role-hpt-intern-ai",
+            "title": "AI Engineer Intern"
           }
         ]
       }
     ],
+    "languages": [
+      {
+        "language": "Vietnamese",
+        "proficiency": "Native"
+      },
+      {
+        "language": "English",
+        "proficiency": "Proficient (TOEIC 980 LR, 320 SW)"
+      },
+      {
+        "language": "French",
+        "proficiency": "Independent (DELF B2)"
+      }
+    ],
     "projects": [
       {
+        "dates": "2025 -- Present",
+        "highlights": [
+          "Solo-architected an enterprise agent orchestration engine with an admin portal enabling dynamic tool declaration, typed parameter schemas, and input-output aliasing.",
+          "Modeled tool dependencies as a directed network, computing optimal shortest paths (minimizing missing parameters) integrated with conversation history, user profiles, and vector retrieval.",
+          "Built a high-throughput event-driven microservices architecture using Spring Boot, Kafka, and Qdrant, accompanied by a lightweight Python service for asynchronous knowledge ingestion."
+        ],
         "id": "proj-agentic-tool-engine",
         "name": "Dynamic Tool-Orchestration & Graph Execution Platform",
-        "url": null,
-        "dates": "2025 -- Present",
         "technologies": [
           "Java (Spring Boot)",
           "Python",
@@ -74,18 +97,17 @@
           "Kafka",
           "PostgreSQL",
           "Redis"
-        ],
-        "highlights": [
-          "Solo-architected an enterprise agent orchestration engine with an admin portal enabling dynamic tool declaration, typed parameter schemas, and input-output aliasing.",
-          "Modeled tool dependencies as a directed network, computing optimal shortest paths (minimizing missing parameters) integrated with conversation history, user profiles, and vector retrieval.",
-          "Built a high-throughput event-driven microservices architecture using Spring Boot, Kafka, and Qdrant, accompanied by a lightweight Python service for asynchronous knowledge ingestion."
         ]
       },
       {
+        "dates": "2025 -- Present",
+        "highlights": [
+          "Led technical development for a production AI conversational engine automating enterprise workflows and internal support ticket routing.",
+          "Designed a multi-tier routing pipeline combining deterministic matching, semantic vector search, and LLM reasoning to optimize response latency and token costs.",
+          "Decoupled system components with a message-driven RabbitMQ bus, ensuring resilient, non-blocking execution under heavy concurrency."
+        ],
         "id": "proj-conversational-workflow",
         "name": "Production Conversational Workflow & Ticket Orchestrator",
-        "url": null,
-        "dates": "2025 -- Present",
         "technologies": [
           "Python",
           "LangChain",
@@ -94,33 +116,30 @@
           "Milvus",
           "Redis",
           "Docker"
-        ],
-        "highlights": [
-          "Led technical development for a production AI conversational engine automating enterprise workflows and internal support ticket routing.",
-          "Designed a multi-tier routing pipeline combining deterministic matching, semantic vector search, and LLM reasoning to optimize response latency and token costs.",
-          "Decoupled system components with a message-driven RabbitMQ bus, ensuring resilient, non-blocking execution under heavy concurrency."
         ]
       },
       {
+        "dates": "2025 -- Present",
+        "highlights": [
+          "Developed an AI-powered simulation and mentoring platform for insurance agents providing contextual roleplay evaluation and automated feedback loops."
+        ],
         "id": "proj-insurance-mentor",
         "name": "AI Insurance Agent Mentoring Platform",
-        "url": null,
-        "dates": "2025 -- Present",
         "technologies": [
           "Python",
           "LangGraph",
           "FastAPI",
           "Vector DB"
-        ],
-        "highlights": [
-          "Developed an AI-powered simulation and mentoring platform for insurance agents providing contextual roleplay evaluation and automated feedback loops."
         ]
       },
       {
+        "dates": "2024",
+        "highlights": [
+          "Researched and implemented multi-modal sarcasm detection on social media data for the UIT Data Science Challenge 2024 (2nd Place).",
+          "Conducted extensive ablation on intermediate attention layers from bidirectional encoders and autoregressive models, evaluating max/mean/min pooling representations against shallow feed-forward heads."
+        ],
         "id": "proj-sarcasm-detection",
         "name": "Multi-Modal Sarcasm Detection & LLM Feature Ablation",
-        "url": "https://github.com/ahndunn",
-        "dates": "2024",
         "technologies": [
           "Python",
           "PyTorch",
@@ -128,10 +147,7 @@
           "CafeBERT",
           "Hugging Face"
         ],
-        "highlights": [
-          "Researched and implemented multi-modal sarcasm detection on social media data for the UIT Data Science Challenge 2024 (2nd Place).",
-          "Conducted extensive ablation on intermediate attention layers from bidirectional encoders and autoregressive models, evaluating max/mean/min pooling representations against shallow feed-forward heads."
-        ]
+        "url": "https://github.com/ahndunn"
       }
     ],
     "skills": [
@@ -187,40 +203,10 @@
         ]
       }
     ],
-    "certifications": [
-      {
-        "id": "cert-nvidia-anomaly",
-        "name": "AI Anomaly Detection",
-        "issuer": "NVIDIA",
-        "date": ""
-      }
-    ],
-    "languages": [
-      {
-        "language": "Vietnamese",
-        "proficiency": "Native"
-      },
-      {
-        "language": "English",
-        "proficiency": "Proficient (TOEIC 980 LR, 320 SW)"
-      },
-      {
-        "language": "French",
-        "proficiency": "Independent (DELF B2)"
-      }
-    ],
-    "awards": [
-      {
-        "title": "2nd Place - UIT Data Science Challenge 2024",
-        "date": "2024",
-        "summary": "Solved multi-modal sarcasm detection on social media by conducting comprehensive ablation studies on LLM latent features (ViSoBERT, CafeBERT, GPT families) paired with custom pooling strategies and classification heads."
-      }
-    ]
+    "summary": "AI Engineer specializing in NLP, TTS, LLM applications (LangChain, LangGraph), and high-reliability backend systems (Python, Java, modern databases, message queues). Experienced in developing and deploying production AI-applied products, vector search pipelines, and microservices."
   },
   "career_orientation": {
-    "target_seniorities": [
-      "Middle"
-    ],
+    "notes": "Looking to relocate to Ho Chi Minh City or work remotely. Focused on NLP, TTS, LLM/Agentic systems, and production backend engineering.",
     "preferred_locations": [
       "Ho Chi Minh City, Vietnam",
       "Remote"
@@ -237,12 +223,22 @@
       "Applied AI Engineer",
       "AI/Backend Engineer"
     ],
+    "target_seniorities": [
+      "Middle"
+    ],
+    "target_timeline": "Actively seeking relocation / transition",
     "work_arrangements": [
       "Hybrid",
       "Remote",
       "On-site"
-    ],
-    "target_timeline": "Actively seeking relocation / transition",
-    "notes": "Looking to relocate to Ho Chi Minh City or work remotely. Focused on NLP, TTS, LLM/Agentic systems, and production backend engineering."
+    ]
+  },
+  "contact": {
+    "current_location": "Nha Trang, Vietnam (Relocating to Ho Chi Minh City)",
+    "email": "ahndunn@gmail.com",
+    "github": "ahndunn",
+    "linkedin": "variphx",
+    "name": "Anh-Dung Huynh",
+    "phone": "+84 327150072"
   }
 }
