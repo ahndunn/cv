@@ -1,40 +1,58 @@
 {
   "contact": {
-    "name": "Alex Chen",
-    "phone": "+1 (555) 234-5678",
-    "email": "alex.chen@example.com",
-    "github": "alexchen",
-    "linkedin": "alex-chen-dev",
-    "website": "https://alexchen.dev",
-    "current_location": "San Francisco, CA"
+    "name": "Anh-Dung Huynh",
+    "phone": "+84 327150072",
+    "email": "ahndunn@gmail.com",
+    "github": "ahndunn",
+    "linkedin": "variphx",
+    "website": null,
+    "current_location": "Nha Trang, Vietnam (Relocating to Ho Chi Minh City)"
   },
   "background": {
-    "summary": "Senior Systems and Backend Engineer with 7+ years of experience designing high-throughput distributed services and high-reliability data pipelines in Rust and Go.",
+    "summary": "AI Engineer specializing in NLP, TTS, LLM applications (LangChain, LangGraph), and high-reliability backend systems (Python, Java, modern databases, message queues). Experienced in developing and deploying production AI-applied products, vector search pipelines, and microservices.",
     "education": [
       {
-        "id": "edu-ucb",
-        "institution": "University of California, Berkeley",
-        "degree": "B.S. in Electrical Engineering & Computer Sciences",
-        "dates": "2015 -- 2019",
+        "id": "edu-uit",
+        "institution": "University of Information Technology, VNU-HCM",
+        "degree": "B.S. in Computer Science",
+        "dates": "Sept 2022 -- Sept 2025",
         "highlights": [
-          "Graduated with Honors",
-          "Teaching Assistant for Operating Systems (CS 162)"
+          "2nd Place - UIT Data Science Challenge 2024"
         ]
       }
     ],
     "experience": [
       {
-        "id": "comp-stripe",
-        "company": "Stripe",
-        "location": "San Francisco, CA",
+        "id": "comp-fpt",
+        "company": "FPT Software",
+        "location": "Vietnam",
         "roles": [
           {
-            "id": "role-stripe-sr",
-            "title": "Senior Backend Engineer",
-            "dates": "Mar 2022 -- Present",
+            "id": "role-fpt-junior-ai",
+            "title": "Junior AI Engineer",
+            "dates": "Sept 2025 -- Present",
             "highlights": [
-              "Architected global payout settlement engine handling $2B+ daily volume with 99.999% availability.",
-              "Led Rust migration for high-performance edge transaction routing, reducing p99 latency by 38%."
+              "Architecting and deploying 2 enterprise AI chatbots automating internal corporate workflows using LangChain, LangGraph, and multi-agent orchestration.",
+              "Engineered an AI-driven mentoring platform for insurance agents, integrating domain-specific LLM reasoning, retrieval pipelines, and interactive feedback loops.",
+              "Built scalable backend services and asynchronous processing pipelines using Python, FastAPI, message queues, and vector databases."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "comp-hpt",
+        "company": "HPT Corporation",
+        "location": "Ho Chi Minh City, Vietnam",
+        "roles": [
+          {
+            "id": "role-hpt-intern-ai",
+            "title": "AI Engineer Intern",
+            "dates": "Jan 2025 -- Jun 2025",
+            "highlights": [
+              "Conducted research and development for Legal NLP, designing high-precision RAG pipelines and domain-specific Named Entity Recognition (NER).",
+              "Trained domain-adapted NER models using PyTorch and Hugging Face transformers, utilizing synthetic data augmentation to resolve severe class imbalance.",
+              "Designed semantic chunking and intelligent document segmentation strategies to optimize retrieval relevance across complex legal corpora.",
+              "Conducted controlled ablation experiments comparing embedding models and architectures, benchmarking precision, recall, F1, and inference latency for R&D leadership."
             ]
           }
         ]
@@ -42,91 +60,164 @@
     ],
     "projects": [
       {
-        "id": "proj-turborpc",
-        "name": "TurboRPC",
-        "url": "https://github.com/alexchen/turborpc",
-        "dates": "2024",
+        "id": "proj-insurance-mentor",
+        "name": "AI Insurance Agent Mentoring Platform",
+        "url": null,
+        "dates": "2025 -- Present",
         "technologies": [
-          "Rust",
-          "Tokio",
-          "SIMD"
+          "Python",
+          "LangChain",
+          "LangGraph",
+          "Vector DB",
+          "FastAPI"
         ],
         "highlights": [
-          "Zero-copy RPC protocol over io_uring achieving 1.8M req/s per core."
+          "Developed an AI-powered simulation and mentoring platform for insurance agents providing contextual roleplay evaluation and automated feedback.",
+          "Implemented retrieval-augmented reasoning over insurance policy documents and objection-handling scenarios."
+        ]
+      },
+      {
+        "id": "proj-corporate-chatbots",
+        "name": "Enterprise Corporate Automation Chatbots",
+        "url": null,
+        "dates": "2025 -- Present",
+        "technologies": [
+          "LangGraph",
+          "Python",
+          "Milvus",
+          "Redis",
+          "Docker"
+        ],
+        "highlights": [
+          "Built and deployed 2 multi-turn agentic chatbots streamlining corporate operations and internal inquiries.",
+          "Integrated semantic vector caching with Redis and hybrid retrieval to ensure low-latency, reliable responses."
+        ]
+      },
+      {
+        "id": "proj-sarcasm-detection",
+        "name": "Multi-Modal Sarcasm Detection & LLM Feature Ablation",
+        "url": "https://github.com/ahndunn",
+        "dates": "2024",
+        "technologies": [
+          "Python",
+          "PyTorch",
+          "ViSoBERT",
+          "CafeBERT",
+          "Hugging Face"
+        ],
+        "highlights": [
+          "Researched and implemented multi-modal sarcasm detection on social media data for the UIT Data Science Challenge 2024 (2nd Place).",
+          "Conducted extensive ablation on intermediate attention layers from bidirectional encoders and autoregressive models, evaluating max/mean/min pooling representations against shallow feed-forward heads."
         ]
       }
     ],
     "skills": [
       {
-        "category": "Languages",
+        "category": "AI & LLM Frameworks",
         "items": [
-          "Rust",
-          "Go",
-          "Python",
-          "SQL"
+          "LangChain",
+          "LangGraph",
+          "NLP",
+          "TTS",
+          "Pydantic",
+          "Vector Search",
+          "PyTorch",
+          "Hugging Face",
+          "Transformers"
         ]
       },
       {
-        "category": "Distributed Systems & Cloud",
+        "category": "Programming Languages",
         "items": [
-          "Kubernetes",
+          "Python",
+          "Java",
+          "Rust",
+          "SQL",
+          "FastAPI"
+        ]
+      },
+      {
+        "category": "Databases & Message Queues",
+        "items": [
+          "Milvus",
+          "Qdrant",
+          "PostgreSQL",
+          "MySQL",
+          "MongoDB",
+          "SQLite",
+          "Redis",
           "Kafka",
-          "AWS",
-          "PostgreSQL"
+          "RabbitMQ"
+        ]
+      },
+      {
+        "category": "Infrastructure & DevOps",
+        "items": [
+          "Docker",
+          "Docker Compose",
+          "Azure",
+          "VPS",
+          "GitLab CI/CD",
+          "GitHub Actions"
         ]
       }
     ],
     "certifications": [
       {
-        "id": "cert-aws-sap",
-        "name": "AWS Certified Solutions Architect - Professional",
-        "issuer": "Amazon Web Services",
-        "date": "2023"
+        "id": "cert-nvidia-anomaly",
+        "name": "AI Anomaly Detection",
+        "issuer": "NVIDIA",
+        "date": ""
       }
     ],
     "languages": [
       {
-        "language": "English",
-        "proficiency": "Native / Bilingual"
+        "language": "Vietnamese",
+        "proficiency": "Native"
       },
       {
-        "language": "Mandarin",
-        "proficiency": "Conversational"
+        "language": "English",
+        "proficiency": "Proficient (TOEIC 980 LR, 320 SW)"
+      },
+      {
+        "language": "French",
+        "proficiency": "Independent (DELF B2)"
       }
     ],
     "awards": [
       {
-        "title": "First Place - Global FinTech Hackathon",
-        "date": "2023",
-        "summary": "Built a decentralized liquidity arbitration engine in Rust."
+        "title": "2nd Place - UIT Data Science Challenge 2024",
+        "date": "2024",
+        "summary": "Solved multi-modal sarcasm detection on social media by conducting comprehensive ablation studies on LLM latent features (ViSoBERT, CafeBERT, GPT families) paired with custom pooling strategies and classification heads."
       }
     ]
   },
   "career_orientation": {
     "target_seniorities": [
-      "Senior",
-      "Staff Engineer"
+      "Middle"
     ],
     "preferred_locations": [
-      "San Francisco, CA",
-      "Seattle, WA",
+      "Ho Chi Minh City, Vietnam",
       "Remote"
     ],
     "target_domains": [
-      "AI Infrastructure",
-      "Distributed Systems",
-      "FinTech"
+      "NLP",
+      "TTS",
+      "AI Applied Products",
+      "Generative AI & Agentic Systems"
     ],
     "target_roles": [
       "AI Engineer",
-      "Backend Engineer",
-      "Infrastructure Engineer"
+      "Middle AI Engineer",
+      "Applied AI Engineer",
+      "AI/Backend Engineer"
     ],
     "work_arrangements": [
+      "Hybrid",
       "Remote",
-      "Hybrid"
+      "On-site"
     ],
-    "target_timeline": "Within 2 months",
-    "notes": "Interested in teams building high-scale compute infrastructure for LLMs or modern financial rails."
+    "target_timeline": "Actively seeking relocation / transition",
+    "notes": "Looking to relocate to Ho Chi Minh City or work remotely. Focused on NLP, TTS, LLM/Agentic systems, and production backend engineering."
   }
 }
