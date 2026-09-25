@@ -1,0 +1,8 @@
+# Ignore downloaded binaries and temporary compilation artifacts
+bin/cv-writer-mcp
+bin/profile-curator-mcp
+bin/*.exe
+tmp/
+*.aux
+*.log
+*.out

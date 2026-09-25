@@ -1,0 +1,132 @@
+{
+  "contact": {
+    "name": "Alex Chen",
+    "phone": "+1 (555) 234-5678",
+    "email": "alex.chen@example.com",
+    "github": "alexchen",
+    "linkedin": "alex-chen-dev",
+    "website": "https://alexchen.dev",
+    "current_location": "San Francisco, CA"
+  },
+  "background": {
+    "summary": "Senior Systems and Backend Engineer with 7+ years of experience designing high-throughput distributed services and high-reliability data pipelines in Rust and Go.",
+    "education": [
+      {
+        "id": "edu-ucb",
+        "institution": "University of California, Berkeley",
+        "degree": "B.S. in Electrical Engineering & Computer Sciences",
+        "dates": "2015 -- 2019",
+        "highlights": [
+          "Graduated with Honors",
+          "Teaching Assistant for Operating Systems (CS 162)"
+        ]
+      }
+    ],
+    "experience": [
+      {
+        "id": "comp-stripe",
+        "company": "Stripe",
+        "location": "San Francisco, CA",
+        "roles": [
+          {
+            "id": "role-stripe-sr",
+            "title": "Senior Backend Engineer",
+            "dates": "Mar 2022 -- Present",
+            "highlights": [
+              "Architected global payout settlement engine handling $2B+ daily volume with 99.999% availability.",
+              "Led Rust migration for high-performance edge transaction routing, reducing p99 latency by 38%."
+            ]
+          }
+        ]
+      }
+    ],
+    "projects": [
+      {
+        "id": "proj-turborpc",
+        "name": "TurboRPC",
+        "url": "https://github.com/alexchen/turborpc",
+        "dates": "2024",
+        "technologies": [
+          "Rust",
+          "Tokio",
+          "SIMD"
+        ],
+        "highlights": [
+          "Zero-copy RPC protocol over io_uring achieving 1.8M req/s per core."
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "category": "Languages",
+        "items": [
+          "Rust",
+          "Go",
+          "Python",
+          "SQL"
+        ]
+      },
+      {
+        "category": "Distributed Systems & Cloud",
+        "items": [
+          "Kubernetes",
+          "Kafka",
+          "AWS",
+          "PostgreSQL"
+        ]
+      }
+    ],
+    "certifications": [
+      {
+        "id": "cert-aws-sap",
+        "name": "AWS Certified Solutions Architect - Professional",
+        "issuer": "Amazon Web Services",
+        "date": "2023"
+      }
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "proficiency": "Native / Bilingual"
+      },
+      {
+        "language": "Mandarin",
+        "proficiency": "Conversational"
+      }
+    ],
+    "awards": [
+      {
+        "title": "First Place - Global FinTech Hackathon",
+        "date": "2023",
+        "summary": "Built a decentralized liquidity arbitration engine in Rust."
+      }
+    ]
+  },
+  "career_orientation": {
+    "target_seniorities": [
+      "Senior",
+      "Staff Engineer"
+    ],
+    "preferred_locations": [
+      "San Francisco, CA",
+      "Seattle, WA",
+      "Remote"
+    ],
+    "target_domains": [
+      "AI Infrastructure",
+      "Distributed Systems",
+      "FinTech"
+    ],
+    "target_roles": [
+      "AI Engineer",
+      "Backend Engineer",
+      "Infrastructure Engineer"
+    ],
+    "work_arrangements": [
+      "Remote",
+      "Hybrid"
+    ],
+    "target_timeline": "Within 2 months",
+    "notes": "Interested in teams building high-scale compute infrastructure for LLMs or modern financial rails."
+  }
+}
