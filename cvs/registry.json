@@ -1,3 +1,20 @@
 {
-  "variants": []
+  "variants": [
+    {
+      "slug": "general-ai-engineer",
+      "role": "General AI Engineer",
+      "tags": [
+        "general",
+        "ai-engineer",
+        "llm",
+        "agentic-orchestration",
+        "backend",
+        "nlp",
+        "python",
+        "java"
+      ],
+      "path": "cvs/general-ai-engineer",
+      "updated_at": "2026-09-25T22:57:00+07:00"
+    }
+  ]
 }
