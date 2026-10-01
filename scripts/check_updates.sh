@@ -36,7 +36,7 @@ get_local_version() {
   fi
 }
 
-echo "=== Checking MCP Binary Versions ==="
+echo "=== Checking CLI Binary Versions ==="
 UPDATES_AVAILABLE=0
 
 check_binary() {
@@ -60,14 +60,14 @@ check_binary() {
   fi
 }
 
-check_binary "ahndunn/cv-writer" "cv-writer-mcp"
-check_binary "ahndunn/profile-curator" "profile-curator-mcp"
+check_binary "ahndunn/cv-writer" "cv-writer"
+check_binary "ahndunn/profile-curator" "profile-curator"
 
 echo "===================================="
 if [ "${UPDATES_AVAILABLE}" -eq 1 ]; then
-  echo "Updates or missing binaries detected! Run: ./scripts/install_or_update_mcps.sh"
+  echo "Updates or missing binaries detected! Run: ./scripts/install_or_update_tools.sh"
   exit 1
 else
-  echo "All MCP binaries are up to date."
+  echo "All CLI binaries are up to date."
   exit 0
 fi

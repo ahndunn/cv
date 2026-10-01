@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # ==============================================================================
-# scripts/install_or_update_mcps.sh
+# scripts/install_or_update_tools.sh
 #
 # Pulls the platform-appropriate release binaries from:
 #   - git@github.com:ahndunn/cv-writer.git (or ahndunn/cv-writer)
 #   - git@github.com:ahndunn/profile-curator.git (or ahndunn/profile-curator)
 # Checks the latest release version on GitHub, compares with local version,
-# and downloads / updates the binaries in bin/.
+# and downloads / updates the stateless CLI binaries in bin/.
 # ==============================================================================
 
 set -euo pipefail
@@ -175,9 +175,9 @@ if [ "${1:-}" = "--force" ] || [ "${1:-}" = "-f" ]; then
   FORCE_UPDATE="true"
 fi
 
-install_or_update_tool "ahndunn/cv-writer" "cv-writer-mcp" "${FORCE_UPDATE}"
-install_or_update_tool "ahndunn/profile-curator" "profile-curator-mcp" "${FORCE_UPDATE}"
+install_or_update_tool "ahndunn/cv-writer" "cv-writer" "${FORCE_UPDATE}"
+install_or_update_tool "ahndunn/profile-curator" "profile-curator" "${FORCE_UPDATE}"
 
 echo "=================================================="
-echo "[✓] All MCP server binaries verified in ${BIN_DIR}:"
+echo "[✓] All CLI tool binaries verified in ${BIN_DIR}:"
 ls -la "${BIN_DIR}"

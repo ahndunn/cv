@@ -2,7 +2,7 @@
 """
 scripts/render_cv.py
 
-Regenerate CV PDF(s) from cv.json using the cv-writer MCP server over JSON-RPC (stdio),
+Regenerate CV PDF(s) from cv.json directly using the stateless cv-writer CLI,
 without needing an interactive AI agent session.
 
 Usage:
@@ -22,103 +22,28 @@ import json
 import os
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 
 def find_binary(repo_root: Path) -> Path:
-    bin_path = repo_root / "bin" / "cv-writer-mcp"
+    bin_path = repo_root / "bin" / "cv-writer"
     if not bin_path.is_file():
         # Check windows executable
-        bin_path_exe = repo_root / "bin" / "cv-writer-mcp.exe"
+        bin_path_exe = repo_root / "bin" / "cv-writer.exe"
         if bin_path_exe.is_file():
             return bin_path_exe
-        print(f"[-] Error: cv-writer-mcp binary not found at {bin_path}.", file=sys.stderr)
-        print("[-] Run `./scripts/install_or_update_mcps.sh` first.", file=sys.stderr)
+        # Check PATH
+        path_tool = subprocess.run(["which", "cv-writer"], capture_output=True, text=True)
+        if path_tool.returncode == 0 and path_tool.stdout.strip():
+            return Path(path_tool.stdout.strip())
+        print(f"[-] Error: cv-writer binary not found at {bin_path}.", file=sys.stderr)
+        print("[-] Run `./scripts/install_or_update_tools.sh` first.", file=sys.stderr)
         sys.exit(1)
     if not os.access(bin_path, os.X_OK):
         print(f"[-] Error: {bin_path} is not executable. Run `chmod +x {bin_path}`.", file=sys.stderr)
         sys.exit(1)
     return bin_path
-
-
-class McpClient:
-    def __init__(self, binary_path: Path):
-        self.process = subprocess.Popen(
-            [str(binary_path)],
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
-            bufsize=1,
-        )
-        self._request_id = 0
-
-    def send_request(self, method: str, params: dict | None = None) -> dict:
-        self._request_id += 1
-        req = {
-            "jsonrpc": "2.0",
-            "id": self._request_id,
-            "method": method,
-        }
-        if params is not None:
-            req["params"] = params
-
-        payload = json.dumps(req)
-        assert self.process.stdin is not None
-        self.process.stdin.write(payload + "\n")
-        self.process.stdin.flush()
-
-        assert self.process.stdout is not None
-        while True:
-            line = self.process.stdout.readline()
-            if not line:
-                stderr_output = ""
-                if self.process.stderr:
-                    stderr_output = self.process.stderr.read()
-                raise RuntimeError(
-                    f"cv-writer-mcp terminated unexpectedly (code {self.process.poll()}). Stderr: {stderr_output}"
-                )
-            line = line.strip()
-            if not line:
-                continue
-            try:
-                data = json.loads(line)
-                if isinstance(data, dict) and data.get("id") == self._request_id:
-                    return data
-            except json.JSONDecodeError:
-                # Ignore non-json logging lines on stdout if any
-                continue
-
-    def initialize(self):
-        self.send_request("initialize", {
-            "protocolVersion": "2024-11-05",
-            "capabilities": {},
-            "clientInfo": {"name": "render_cv_cli", "version": "1.0.0"}
-        })
-        # Send initialized notification
-        notif = {"jsonrpc": "2.0", "method": "notifications/initialized"}
-        assert self.process.stdin is not None
-        self.process.stdin.write(json.dumps(notif) + "\n")
-        self.process.stdin.flush()
-
-    def render_cv(self, cv_profile: dict, output_path: str) -> dict:
-        res = self.send_request("tools/call", {
-            "name": "render_cv",
-            "arguments": {
-                "profile": cv_profile,
-                "output_path": output_path
-            }
-        })
-        return res
-
-    def close(self):
-        try:
-            if self.process.stdin and not self.process.stdin.closed:
-                self.process.stdin.close()
-            self.process.terminate()
-            self.process.wait(timeout=2)
-        except Exception:
-            self.process.kill()
 
 
 def resolve_cv_paths(target: str, repo_root: Path) -> tuple[Path, Path]:
@@ -147,36 +72,59 @@ def resolve_cv_paths(target: str, repo_root: Path) -> tuple[Path, Path]:
     return json_path, pdf_path
 
 
-def render_single_cv(client: McpClient, json_path: Path, output_pdf_path: Path):
+def render_single_cv(
+    binary_path: Path,
+    json_path: Path,
+    output_pdf_path: Path,
+    changelog_dir: str | None = None,
+    emit_tex: bool = False,
+    dry_run: bool = False,
+) -> bool:
     print(f"[*] Reading CV data: {json_path}")
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # In case payload is wrapped under {"cv_profile": ...} or directly CvProfile
-    profile = data.get("cv_profile", data)
+    # In case payload is wrapped under {"cv_profile": ...}
+    profile_data = data.get("cv_profile", data)
 
     output_pdf_path.parent.mkdir(parents=True, exist_ok=True)
     abs_out_str = str(output_pdf_path.resolve())
 
-    print(f"[*] Rendering to PDF: {abs_out_str} ...")
-    resp = client.render_cv(profile, abs_out_str)
+    # Build command
+    cmd = [
+        str(binary_path),
+        "compile",
+        "--profile",
+        "-",
+        "--output",
+        abs_out_str,
+    ]
 
-    if "error" in resp:
-        print(f"[-] MCP Error: {resp['error']}", file=sys.stderr)
+    if changelog_dir:
+        cmd.extend(["--changelog-dir", changelog_dir])
+    if emit_tex:
+        cmd.append("--emit-tex")
+    if dry_run:
+        cmd.append("--dry-run")
+
+    print(f"[*] Compiling to PDF: {abs_out_str} ...")
+    proc = subprocess.run(
+        cmd,
+        input=json.dumps(profile_data),
+        text=True,
+        capture_output=True,
+    )
+
+    if proc.returncode != 0:
+        print(f"[-] Compilation failed with exit code {proc.returncode}:", file=sys.stderr)
+        if proc.stdout.strip():
+            print(proc.stdout.strip(), file=sys.stderr)
+        if proc.stderr.strip():
+            print(proc.stderr.strip(), file=sys.stderr)
         return False
 
-    result = resp.get("result", {})
-    if result.get("isError"):
-        content = result.get("content", [])
-        msgs = [c.get("text", "") for c in content if isinstance(c, dict)]
-        print(f"[-] Tool execution failed:\n" + "\n".join(msgs), file=sys.stderr)
-        return False
-
-    # Extract success text
-    content = result.get("content", [])
-    success_text = "\n".join(c.get("text", "") for c in content if isinstance(c, dict) and "text" in c)
-    if success_text:
-        print(f"[✓] {success_text.strip()}")
+    if proc.stdout.strip():
+        print(f"[✓] {proc.stdout.strip()}")
     else:
         print(f"[✓] Successfully compiled: {abs_out_str}")
 
@@ -189,7 +137,7 @@ def render_single_cv(client: McpClient, json_path: Path, output_pdf_path: Path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Regenerate CV PDF(s) directly from cv.json via cv-writer-mcp."
+        description="Regenerate CV PDF(s) directly from cv.json via stateless cv-writer CLI."
     )
     parser.add_argument(
         "target",
@@ -205,6 +153,20 @@ def main():
         "-o",
         "--output",
         help="Custom output PDF path (applicable only when targeting a single CV)",
+    )
+    parser.add_argument(
+        "--changelog-dir",
+        help="Directory to record timestamped profile snapshots and markdown changelogs",
+    )
+    parser.add_argument(
+        "--emit-tex",
+        action="store_true",
+        help="Also emit raw LaTeX source alongside the PDF",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Validate schema and render template without running LuaLaTeX",
     )
 
     args = parser.parse_args()
@@ -240,19 +202,21 @@ def main():
             print(f"[-] {e}", file=sys.stderr)
             sys.exit(1)
 
-    print(f"[+] Starting cv-writer-mcp from {binary_path} ...")
-    client = McpClient(binary_path)
-    client.initialize()
+    print(f"[+] Using cv-writer CLI from {binary_path}")
 
     all_ok = True
-    try:
-        for json_p, pdf_p in targets:
-            print("-" * 50)
-            ok = render_single_cv(client, json_p, pdf_p)
-            if not ok:
-                all_ok = False
-    finally:
-        client.close()
+    for json_p, pdf_p in targets:
+        print("-" * 50)
+        ok = render_single_cv(
+            binary_path=binary_path,
+            json_path=json_p,
+            output_pdf_path=pdf_p,
+            changelog_dir=args.changelog_dir,
+            emit_tex=args.emit_tex,
+            dry_run=args.dry_run,
+        )
+        if not ok:
+            all_ok = False
 
     print("=" * 50)
     if all_ok:

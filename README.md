@@ -4,52 +4,54 @@ An agent-skill-centric repository for maintaining a canonical, version-controlle
 
 ## Architecture
 
-This workspace integrates two Model Context Protocol (MCP) servers:
-1. **`profile-curator`**: Iterative interview, incremental enrichment, completeness validation, and career orientation.
-2. **`cv-writer`**: High-fidelity LuaLaTeX compilation and PDF rendering.
+This workspace integrates two **agent-first, stateless CLI tools**:
+1. **`profile-curator`**: Iterative interview guide, incremental enrichment, completeness validation, STAR interview story vault, and profile export.
+2. **`cv-writer`**: High-fidelity LuaLaTeX compilation, profile diffs/changelogs, and PDF rendering using the modern Star Rover template.
 
 ```
 ├── .agents/
 │   ├── agents/
 │   │   └── cv-suite-orchestrator.md     # Specialized career orchestrator agent
 │   ├── rules/
-│   │   └── cv_profile_workflow.md       # Rules linking curation, matching, and generation
+│   │   └── cv_profile_workflow.md       # Workflow seam between curation and compilation
 │   └── skills/
-│       ├── curate-profile/              # Entrypoint skill for interview & profile updates
+│       ├── curate-profile/              # Interview & profile curation skill
 │       │   └── SKILL.md
-│       └── generate-cv/                 # Entrypoint skill for JD matching & CV compilation
+│       └── generate-cv/                 # JD matching & CV compilation skill
 │           └── SKILL.md
-├── bin/                                 # Platform-specific MCP binaries (auto-managed)
+├── bin/                                 # Stateless CLI binaries (auto-managed)
 │   ├── .versions.json
-│   ├── cv-writer-mcp
-│   └── profile-curator-mcp
+│   ├── cv-writer
+│   └── profile-curator
 ├── cvs/                                 # Generated CV variants
 │   ├── registry.json                    # Tag registry for JD reuse and matching
 │   └── <variant-slug>/
 │       ├── cv.json                      # Tailored CvProfile payload
 │       ├── cv.pdf                       # Rendered PDF
 │       └── README.md                    # Role context, tags, tailoring rationale
-├── mcp_config.json                      # MCP configuration for IDE and agent runtimes
+├── mcp_config.json                      # Optional legacy MCP configuration (fallback)
 ├── profile/
 │   └── profile.json                     # Canonical Git-versioned master profile
 └── scripts/
-    ├── install_or_update_mcps.sh        # Pull / update platform binaries from releases
-    └── check_updates.sh                 # Inspect local vs latest GitHub release versions
+    ├── install_or_update_tools.sh       # Pull / update CLI binaries from GitHub releases
+    ├── check_updates.sh                 # Inspect local vs latest GitHub release versions
+    ├── render_cv.py                     # Python runner calling cv-writer CLI
+    └── regenerate_cvs.sh                # Convenient shell wrapper to recompile CVs
 ```
 
 ---
 
 ## Getting Started
 
-### 1. Install or Update MCP Binaries
-To automatically detect your OS/architecture and pull the latest binaries from GitHub:
+### 1. Install or Update CLI Binaries
+To automatically detect your OS/architecture and pull the latest release binaries:
 ```bash
-./scripts/install_or_update_mcps.sh
+./scripts/install_or_update_tools.sh
 ```
 
 To force re-download:
 ```bash
-./scripts/install_or_update_mcps.sh --force
+./scripts/install_or_update_tools.sh --force
 ```
 
 ### 2. Check for Updates
@@ -59,7 +61,7 @@ To check if new versions exist without modifying your environment:
 ```
 
 ### 3. Regenerate CV PDFs (Without AI Agent)
-When `cv-writer` is updated or when adjusting template/styling rules, you can directly recompile any `cv.pdf` from its `cv.json`:
+You can directly recompile any `cv.pdf` from its `cv.json`:
 ```bash
 # Recompile a specific variant
 ./scripts/regenerate_cvs.sh cvs/general-ai-engineer
@@ -68,6 +70,10 @@ When `cv-writer` is updated or when adjusting template/styling rules, you can di
 ./scripts/regenerate_cvs.sh --all
 ```
 
+Or invoke `cv-writer` directly:
+```bash
+./bin/cv-writer compile -p cvs/general-ai-engineer/cv.json -o cvs/general-ai-engineer/cv.pdf
+```
 
 ---
 
@@ -75,13 +81,17 @@ When `cv-writer` is updated or when adjusting template/styling rules, you can di
 
 ### 1. Curating Your Master Profile
 Use the **`curate-profile`** skill:
-- Review completeness and missing metrics with `validate_profile`.
-- Answer targeted questions recommended by `recommend_next_questions`.
-- Incremental updates are saved to `profile/profile.json` and tracked in Git.
+- Review completeness and missing metrics with `./bin/profile-curator validate --state profile/profile.json`.
+- Answer targeted questions recommended by `./bin/profile-curator guide --state profile/profile.json`.
+- Incrementally patch updates via `./bin/profile-curator patch` into `profile/profile.json` and track with Git commits.
 
 ### 2. Generating a Tailored CV from a Job Description (JD)
 Use the **`generate-cv`** skill:
 - Paste a Job Description or target role requirements.
 - The agent extracts core tags and searches `cvs/registry.json`.
 - If a matching variant exists, it can be reused or refined.
-- When generating a new variant, the agent compiles `cv.pdf` via `cv-writer`, stores the tailored payload `cv.json`, writes a companion `README.md`, and updates `cvs/registry.json`.
+- When generating a new variant:
+  1. Base profile data is exported via `./bin/profile-curator export --state profile/profile.json | jq '.cv_profile'`.
+  2. The agent tailors experiences, metrics, and skill ordering in `cvs/<variant-slug>/cv.json`.
+  3. The PDF is compiled with `./bin/cv-writer compile -p cvs/<variant-slug>/cv.json -o cvs/<variant-slug>/cv.pdf --changelog-dir cvs/<variant-slug>/changelogs/`.
+  4. The companion `README.md` and `cvs/registry.json` are created/updated.

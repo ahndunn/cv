@@ -1,12 +1,10 @@
 {
   "mcpServers": {
     "profile-curator": {
-      "command": "./bin/profile-curator-mcp",
-      "args": []
-    },
-    "cv-writer": {
-      "command": "./bin/cv-writer-mcp",
-      "args": []
+      "command": "./bin/profile-curator",
+      "args": [
+        "serve-mcp"
+      ]
     }
   }
 }

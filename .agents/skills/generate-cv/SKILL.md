@@ -2,7 +2,7 @@
 name: generate-cv
 description: >-
   Tailor and generate a publication-ready CV PDF from a Job Description (JD) using the master profile,
-  matching tags against existing variants to reuse or creating a new variant with a companion README.md.
+  matching tags against existing variants to reuse or creating a new variant with a companion README.md using cv-writer CLI.
 ---
 
 # Skill: Generate Tailored CV
@@ -15,18 +15,21 @@ Use this skill as the primary entrypoint when the user supplies a Job Descriptio
 - If creating a new variant or updating one:
   1. Extract key focus areas from the JD (required technologies, domain emphasis, seniority level).
   2. Select and highlight relevant experiences/projects from `profile/profile.json`.
-  3. Transform to `CvProfile` schema (via `export_to_cv_writer` on `profile-curator`).
-  4. Compile native PDF using `render_cv` on `cv-writer`.
+  3. Transform to base `CvProfile` schema via `./bin/profile-curator export --state profile/profile.json` or customize directly.
+  4. Compile native PDF using `./bin/cv-writer compile`.
   5. Produce `cvs/<variant-slug>/README.md` explaining the rationale and focus points.
   6. Register the variant in `cvs/registry.json`.
 
-## Available MCP Tools
-- **`profile-curator`**:
-  - `export_to_cv_writer`: Converts `CuratedProfile` into `CvProfile`. Returns envelope `{ "cv_profile": ... }`.
-- **`cv-writer`**:
-  - `get_cv_schema`: Inspect expected CV fields.
-  - `get_template_info`: Star Rover styling rules, margins, color scheme.
-  - `render_cv`: Compiles LuaLaTeX PDF from `{ "profile": <cv_profile>, "output_path": <dest_path> }`.
+## Available CLI Tools
+Binaries: `./bin/cv-writer` and `./bin/profile-curator`
+
+- **`cv-writer compile -p <profile.json> -o <output.pdf> [--changelog-dir <dir>] [--emit-tex] [--dry-run]`**:
+  Compiles a `CvProfile` JSON (or STDIN via `-p -`) into a LuaLaTeX PDF.
+- **`cv-writer schema`**: Outputs canonical `CvProfile` JSON Schema.
+- **`cv-writer sample`**: Outputs realistic reference JSON profile.
+- **`cv-writer template-info`**: Outputs typography, margins, color palette.
+- **`profile-curator export --state profile/profile.json`**:
+  Exports curated profile into `{ "cv_profile": <CvProfile> }`.
 
 ## Step-by-Step Procedure
 
@@ -41,31 +44,32 @@ Use this skill as the primary entrypoint when the user supplies a Job Descriptio
    - **If match found**: Inform the user: *"Found existing variant `cvs/<slug>` matching tags [tags]. Would you like to use this variant directly or create a specialized adaptation?"*
 
 ### 2. Tailor CV Profile Payload
-1. Load `profile/profile.json`.
-2. Generate base CV profile via `export_to_cv_writer` or curate specific experiences:
-   - Prioritize bullet points and projects directly relevant to the JD requirements.
-   - Adjust `summary` to reflect the candidate's alignment with the role.
-   - Reorder skills so that JD-required technologies appear first.
-3. Extract the inner `cv_profile` dictionary:
-   ```json
-   {
-     "contact": { ... },
-     "summary": "...",
-     "skills": [ ... ],
-     "experience": [ ... ],
-     "projects": [ ... ],
-     "education": [ ... ],
-     "certifications": [ ... ]
-   }
+1. Load `profile/profile.json` or export base CV data:
+   ```bash
+   ./bin/profile-curator export --state profile/profile.json | jq '.cv_profile' > cvs/<variant-slug>/cv.json
    ```
+2. Tailor `cvs/<variant-slug>/cv.json`:
+   - Prioritize bullet points and projects directly relevant to the JD requirements.
+   - Adjust `summary` to reflect candidate alignment with the specific role.
+   - Reorder skills so JD-required technologies appear first.
 
-### 3. Generate Folder & Files
-1. Create directory `cvs/<variant-slug>/`.
-2. Save tailored JSON to `cvs/<variant-slug>/cv.json`.
-3. Invoke `render_cv` on `cv-writer`:
-   - `profile`: `<cv_profile object>`
-   - `output_path`: `<workspace_root>/cvs/<variant-slug>/cv.pdf`
-4. Confirm successful compilation (returns PDF size and status).
+### 3. Compile PDF via `cv-writer`
+1. Ensure destination directory exists:
+   ```bash
+   mkdir -p cvs/<variant-slug>
+   ```
+2. Compile the PDF:
+   ```bash
+   ./bin/cv-writer compile \
+     -p cvs/<variant-slug>/cv.json \
+     -o cvs/<variant-slug>/cv.pdf \
+     --changelog-dir cvs/<variant-slug>/changelogs/
+   ```
+3. Check exit code:
+   - `0`: Success (PDF compiled atomically).
+   - `1`: I/O error.
+   - `2`: Schema validation error.
+   - `3`: LuaLaTeX engine error.
 
 ### 4. Create Companion `README.md`
 Every generated variant MUST have `cvs/<variant-slug>/README.md` with:
