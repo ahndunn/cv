@@ -1,34 +1,21 @@
 {
-  "awards": [
-    {
-      "date": "2024",
-      "summary": "Won 2nd Place out of competitive teams by engineering a multi-modal sarcasm detection pipeline on Vietnamese social media; conducted in-depth feature ablations demonstrating that intermediate encoder representations significantly outperform standard [CLS] embeddings by preserving subtle ironic nuances lost in deeper arithmetic transformations.",
-      "title": "2nd Place - UIT Data Science Challenge 2024"
-    }
-  ],
-  "certifications": [
-    {
-      "date": "2025",
-      "issuer": "NVIDIA",
-      "name": "Nvidia Certificate of Competency — AI for Anomaly Detection"
-    }
-  ],
   "contact": {
+    "name": "Anh-Dung Huynh",
+    "phone": "+84 327150072",
     "email": "ahndunn@gmail.com",
     "github": "ahndunn",
     "linkedin": "variphx",
-    "location": "Nha Trang, Vietnam (Relocating to Ho Chi Minh City)",
-    "name": "Anh-Dung Huynh",
-    "phone": "+84 327150072"
+    "location": "Nha Trang, Vietnam (Relocating to Ho Chi Minh City)"
   },
+  "summary": "AI Engineer specializing in Agentic Orchestration (LangGraph, Spring Boot), advanced RAG (hierarchical chunking, document graphs), and production-grade asynchronous backends (Python, Java, RabbitMQ, Kafka, modern vector databases). Proven track record leading cross-functional teams and deploying enterprise conversational systems, real-time multimodal roleplay simulations, and high-precision legal NLP pipelines.",
   "education": [
     {
-      "dates": "Sept 2022 -- Sept 2025",
+      "institution": "University of Information Technology, VNU-HCM",
       "degree": "B.S. in Computer Science",
+      "dates": "Sept 2022 -- Sept 2025",
       "highlights": [
         "2nd Place - UIT Data Science Challenge 2024"
-      ],
-      "institution": "University of Information Technology, VNU-HCM"
+      ]
     }
   ],
   "experience": [
@@ -37,6 +24,7 @@
       "location": "Vietnam",
       "roles": [
         {
+          "title": "AI Engineer",
           "dates": "Sept 2025 -- Present",
           "highlights": [
             "Led a 5-person AI development team, collaborating with PM, PO, and external vendors across iterative delivery cycles to deploy enterprise AI automation systems.",
@@ -45,8 +33,7 @@
             "Architected an asynchronous, message-driven backend with RabbitMQ to decouple external client adapters (e.g., MS Teams) from heavy inference workloads, eliminating synchronous HTTP connection timeouts through instant event acknowledgment and streamed ephemeral status updates.",
             "Solo-designed an agentic orchestration platform in Java (Spring Boot) featuring a declarative dynamic tool-dependency graph that calculates shortest execution paths based on parameter availability, context history, and vector retrieval (Qdrant).",
             "Enforced enterprise-grade reliability using Pydantic validation, structured exception hierarchies, distributed tracing, and centralized logging across Python and Java microservices."
-          ],
-          "title": "AI Engineer"
+          ]
         }
       ]
     },
@@ -55,6 +42,7 @@
       "location": "Ho Chi Minh City, Vietnam",
       "roles": [
         {
+          "title": "AI Engineer Intern",
           "dates": "Jan 2025 -- Jun 2025",
           "highlights": [
             "Spearheaded Legal NLP R&D, designing high-precision RAG pipelines and domain-adapted Named Entity Recognition (NER) models using PyTorch and Hugging Face transformers.",
@@ -62,53 +50,51 @@
             "Implemented Parent-Document Retrieval paired with hybrid search (lexical + dense) to overcome low semantic contrast and keyword confusion inherent in generalized embedding models on legal corpora.",
             "Addressed acute domain class imbalance via rule-based synonym substitution augmentation, enhancing token-level classification stability on niche legal entities.",
             "Benchmarked embedding architectures and vector representations, evaluating precision, recall, F1, and inference latency tradeoffs to guide production R&D strategy."
-          ],
-          "title": "AI Engineer Intern"
+          ]
         }
       ]
     }
   ],
-  "hide_page_numbers": false,
   "projects": [
     {
+      "name": "Dynamic Tool-Orchestration & Graph Execution Platform",
       "dates": "2025 -- Present",
       "highlights": [
         "Technologies: Java (Spring Boot), Python, Qdrant, Kafka, PostgreSQL, Redis",
         "Solo-architected an enterprise agent orchestration engine in Java (Spring Boot) with an admin portal enabling dynamic tool declaration, typed parameter schemas, and input-output aliasing.",
         "Modeled tool dependencies as dynamic directed graphs, computing optimal shortest execution paths (minimizing missing parameters) integrated with conversation history, user profiles, and vector retrieval (Qdrant).",
         "Built a high-throughput event-driven microservices architecture using Spring Boot, Kafka, and Qdrant, accompanied by a lightweight Python service for asynchronous knowledge ingestion."
-      ],
-      "name": "Dynamic Tool-Orchestration & Graph Execution Platform"
+      ]
     },
     {
+      "name": "Production Conversational Workflow & Ticket Orchestrator",
       "dates": "2025 -- Present",
       "highlights": [
         "Technologies: Python, LangChain, LangGraph, RabbitMQ, Milvus, Redis, Docker",
         "Led technical development for a production AI conversational engine automating enterprise workflows and internal support ticket routing.",
         "Designed a multi-tier routing pipeline combining deterministic matching, semantic vector search, and LLM reasoning to optimize response latency and token costs.",
         "Decoupled system components with a message-driven RabbitMQ bus, ensuring resilient, non-blocking execution under heavy concurrency."
-      ],
-      "name": "Production Conversational Workflow & Ticket Orchestrator"
+      ]
     },
     {
+      "name": "AI Insurance Agent Mentoring Platform",
       "dates": "2025 -- Present",
       "highlights": [
         "Technologies: Python, LangGraph, FastAPI, D-ID, Qdrant, LLM-as-a-Judge, Docker",
         "Architected an interactive, real-time video simulation platform enabling insurance agents to practice client consultation through realistic conversational roleplay.",
         "Integrated dynamic conversational state graphs via LangGraph with streaming avatar and synthetic speech services (D-ID), managing bi-directional turn-taking and low-latency interaction.",
         "Implemented an automated evaluation pipeline utilizing LLM-as-a-judge against structured sales rubrics (objection handling, compliance, product knowledge) to deliver granular post-session scorecards and actionable coaching."
-      ],
-      "name": "AI Insurance Agent Mentoring Platform"
+      ]
     },
     {
+      "name": "Multi-Modal Sarcasm Detection & LLM Feature Ablation",
+      "url": "https://github.com/ahndunn",
       "dates": "2024",
       "highlights": [
         "Technologies: Python, PyTorch, ViSoBERT, CafeBERT, Hugging Face",
         "Researched and implemented multi-modal sarcasm detection on Vietnamese social media, achieving 2nd Place in the UIT Data Science Challenge 2024.",
         "Conducted extensive ablation studies on intermediate layer representations across ViSoBERT, CafeBERT, and GPT backbones, discovering that intermediate encoder representations with max pooling capture multi-layered figurative semantics significantly better than vanilla [CLS] token pooling."
-      ],
-      "name": "Multi-Modal Sarcasm Detection & LLM Feature Ablation",
-      "url": "https://github.com/ahndunn"
+      ]
     }
   ],
   "skills": [
@@ -174,5 +160,19 @@
       ]
     }
   ],
-  "summary": "AI Engineer specializing in Agentic Orchestration (LangGraph, Spring Boot), advanced RAG (hierarchical chunking, document graphs), and production-grade asynchronous backends (Python, Java, RabbitMQ, Kafka, modern vector databases). Proven track record leading cross-functional teams and deploying enterprise conversational systems, real-time multimodal roleplay simulations, and high-precision legal NLP pipelines."
+  "certifications": [
+    {
+      "name": "Nvidia Certificate of Competency — AI for Anomaly Detection",
+      "issuer": "NVIDIA",
+      "date": "2025"
+    }
+  ],
+  "awards": [
+    {
+      "title": "2nd Place - UIT Data Science Challenge 2024",
+      "date": "2024",
+      "summary": "Won 2nd Place out of competitive teams by engineering a multi-modal sarcasm detection pipeline on Vietnamese social media; conducted in-depth feature ablations demonstrating that intermediate encoder representations significantly outperform standard [CLS] embeddings by preserving subtle ironic nuances lost in deeper arithmetic transformations."
+    }
+  ],
+  "hide_page_numbers": false
 }

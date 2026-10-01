@@ -3,16 +3,16 @@
     "awards": [
       {
         "date": "2024",
-        "summary": "Solved multi-modal sarcasm detection on social media by conducting comprehensive ablation studies on LLM latent features (ViSoBERT, CafeBERT, GPT families) paired with custom pooling strategies and classification heads.",
+        "summary": "Won 2nd Place out of competitive teams by engineering a multi-modal sarcasm detection pipeline on Vietnamese social media; conducted in-depth feature ablations demonstrating that intermediate encoder representations significantly outperform standard [CLS] embeddings by preserving subtle ironic nuances lost in deeper arithmetic transformations.",
         "title": "2nd Place - UIT Data Science Challenge 2024"
       }
     ],
     "certifications": [
       {
-        "date": "",
+        "date": "2025",
         "id": "cert-nvidia-anomaly",
         "issuer": "NVIDIA",
-        "name": "Nvidia Certificate of Competency \u2014 AI for Anomaly Detection"
+        "name": "Nvidia Certificate of Competency — AI for Anomaly Detection"
       }
     ],
     "education": [
@@ -37,8 +37,8 @@
             "highlights": [
               "Led a 5-person AI development team, collaborating with PM, PO, and external vendors across iterative delivery cycles to deploy enterprise AI automation systems.",
               "Took end-to-end technical ownership of a production conversational workflow system automating internal workflows and structured ticket orchestration from architecture through cloud deployment.",
-              "Architected a multi-layer query routing engine combining LLM reasoning, semantic vector similarity, and deterministic rule matching, drastically curtailing unnecessary model calls and cloud inference costs.",
-              "Engineered an asynchronous, message-driven backend backbone with RabbitMQ, eliminating synchronous API bottlenecks and scaling concurrent throughput under load.",
+              "Architected a multi-layer query routing engine combining LLM reasoning, semantic vector similarity, and deterministic rule matching to bypass redundant generative model invocations and optimize downstream processing.",
+              "Architected an asynchronous, message-driven backend with RabbitMQ to decouple external client adapters (e.g., MS Teams) from heavy inference workloads, eliminating synchronous HTTP connection timeouts through instant event acknowledgment and streamed ephemeral status updates.",
               "Solo-designed an agentic orchestration platform in Java (Spring Boot) featuring a declarative dynamic tool-dependency graph that calculates shortest execution paths based on parameter availability, context history, and vector retrieval (Qdrant).",
               "Enforced enterprise-grade reliability using Pydantic validation, structured exception hierarchies, distributed tracing, and centralized logging across Python and Java microservices."
             ],
@@ -55,10 +55,11 @@
           {
             "dates": "Jan 2025 -- Jun 2025",
             "highlights": [
-              "Conducted research and development for Legal NLP, designing high-precision RAG pipelines and domain-specific Named Entity Recognition (NER).",
-              "Trained domain-adapted NER models using PyTorch and Hugging Face transformers, utilizing synthetic data augmentation to resolve severe class imbalance.",
-              "Designed semantic chunking and intelligent document segmentation strategies to optimize retrieval relevance across complex legal corpora.",
-              "Conducted controlled ablation experiments comparing embedding models and architectures, benchmarking precision, recall, F1, and inference latency for R&D leadership."
+              "Spearheaded Legal NLP R&D, designing high-precision RAG pipelines and domain-adapted Named Entity Recognition (NER) models using PyTorch and Hugging Face transformers.",
+              "Architected hierarchical document segmentation down to granular statutory units (articles, clauses, sections) using a custom regex engine to extract cross-reference citations and construct interconnected legal document graphs.",
+              "Implemented Parent-Document Retrieval paired with hybrid search (lexical + dense) to overcome low semantic contrast and keyword confusion inherent in generalized embedding models on legal corpora.",
+              "Addressed acute domain class imbalance via rule-based synonym substitution augmentation, enhancing token-level classification stability on niche legal entities.",
+              "Benchmarked embedding architectures and vector representations, evaluating precision, recall, F1, and inference latency tradeoffs to guide production R&D strategy."
             ],
             "id": "role-hpt-intern-ai",
             "title": "AI Engineer Intern"
@@ -84,8 +85,8 @@
       {
         "dates": "2025 -- Present",
         "highlights": [
-          "Solo-architected an enterprise agent orchestration engine with an admin portal enabling dynamic tool declaration, typed parameter schemas, and input-output aliasing.",
-          "Modeled tool dependencies as a directed network, computing optimal shortest paths (minimizing missing parameters) integrated with conversation history, user profiles, and vector retrieval.",
+          "Solo-architected an enterprise agent orchestration engine in Java (Spring Boot) with an admin portal enabling dynamic tool declaration, typed parameter schemas, and input-output aliasing.",
+          "Modeled tool dependencies as dynamic directed graphs, computing optimal shortest execution paths (minimizing missing parameters) integrated with conversation history, user profiles, and vector retrieval (Qdrant).",
           "Built a high-throughput event-driven microservices architecture using Spring Boot, Kafka, and Qdrant, accompanied by a lightweight Python service for asynchronous knowledge ingestion."
         ],
         "id": "proj-agentic-tool-engine",
@@ -121,7 +122,9 @@
       {
         "dates": "2025 -- Present",
         "highlights": [
-          "Developed an AI-powered simulation and mentoring platform for insurance agents providing contextual roleplay evaluation and automated feedback loops."
+          "Architected an interactive, real-time video simulation platform enabling insurance agents to practice client consultation through realistic conversational roleplay.",
+          "Integrated dynamic conversational state graphs via LangGraph with streaming avatar and synthetic speech services (D-ID), managing bi-directional turn-taking and low-latency interaction.",
+          "Implemented an automated evaluation pipeline utilizing LLM-as-a-judge against structured sales rubrics (objection handling, compliance, product knowledge) to deliver granular post-session scorecards and actionable coaching."
         ],
         "id": "proj-insurance-mentor",
         "name": "AI Insurance Agent Mentoring Platform",
@@ -129,14 +132,17 @@
           "Python",
           "LangGraph",
           "FastAPI",
-          "Vector DB"
+          "D-ID",
+          "Qdrant",
+          "LLM-as-a-Judge",
+          "Docker"
         ]
       },
       {
         "dates": "2024",
         "highlights": [
-          "Researched and implemented multi-modal sarcasm detection on social media data for the UIT Data Science Challenge 2024 (2nd Place).",
-          "Conducted extensive ablation on intermediate attention layers from bidirectional encoders and autoregressive models, evaluating max/mean/min pooling representations against shallow feed-forward heads."
+          "Researched and implemented multi-modal sarcasm detection on Vietnamese social media, achieving 2nd Place in the UIT Data Science Challenge 2024.",
+          "Conducted extensive ablation studies on intermediate layer representations across ViSoBERT, CafeBERT, and GPT backbones, discovering that intermediate encoder representations with max pooling capture multi-layered figurative semantics significantly better than vanilla [CLS] token pooling."
         ],
         "id": "proj-sarcasm-detection",
         "name": "Multi-Modal Sarcasm Detection & LLM Feature Ablation",
@@ -156,14 +162,16 @@
         "items": [
           "LangChain",
           "LangGraph",
+          "Agentic Orchestration",
+          "RAG & Document Graphs",
+          "LLM-as-a-Judge",
           "NLP",
-          "TTS",
+          "Multimodal AI (D-ID, ElevenLabs, Whisper)",
           "Pydantic",
           "Vector Search",
           "PyTorch",
           "Hugging Face",
-          "Transformers",
-          "Agentic Orchestration"
+          "Transformers"
         ]
       },
       {
@@ -203,19 +211,20 @@
         ]
       }
     ],
-    "summary": "AI Engineer specializing in NLP, TTS, LLM applications (LangChain, LangGraph), and high-reliability backend systems (Python, Java, modern databases, message queues). Experienced in developing and deploying production AI-applied products, vector search pipelines, and microservices."
+    "summary": "AI Engineer specializing in Agentic Orchestration (LangGraph, Spring Boot), advanced RAG (hierarchical chunking, document graphs), and production-grade asynchronous backends (Python, Java, RabbitMQ, Kafka, modern vector databases). Proven track record leading cross-functional teams and deploying enterprise conversational systems, real-time multimodal roleplay simulations, and high-precision legal NLP pipelines."
   },
   "career_orientation": {
-    "notes": "Looking to relocate to Ho Chi Minh City or work remotely. Focused on NLP, TTS, LLM/Agentic systems, and production backend engineering.",
+    "notes": "Looking to relocate to Ho Chi Minh City or work remotely. Focused on Agentic systems, production RAG architectures, and scalable AI backend engineering. Available with standard 30-day notice.",
+    "notice_period": "30 days",
     "preferred_locations": [
       "Ho Chi Minh City, Vietnam",
       "Remote"
     ],
     "target_domains": [
-      "NLP",
-      "TTS",
-      "AI Applied Products",
-      "Generative AI & Agentic Systems"
+      "Enterprise AI & Automation",
+      "Agentic Systems & Workflow Orchestration",
+      "NLP & Multimodal AI Products",
+      "FinTech & Scaled Tech Platforms"
     ],
     "target_roles": [
       "AI Engineer",
@@ -226,7 +235,7 @@
     "target_seniorities": [
       "Middle"
     ],
-    "target_timeline": "Actively seeking relocation / transition",
+    "target_timeline": "Actively seeking relocation / transition (30-day notice)",
     "work_arrangements": [
       "Hybrid",
       "Remote",
@@ -240,5 +249,38 @@
     "linkedin": "variphx",
     "name": "Anh-Dung Huynh",
     "phone": "+84 327150072"
-  }
+  },
+  "stories": [
+    {
+      "action": "Established a flat, collaborative team culture anchored in psychological safety and transparent 1-on-1 communication. Decoupled monolithic delivery objectives into specialized functional domains aligned with individual strengths and growth affinities. Focused the leadership role on architectural enablement, cross-team orchestration, and proactive unblocking.",
+      "id": "story-fpt-team-alignment",
+      "result": "Unified engineering motivation, maintained predictable sprint delivery across enterprise deployment cycles, and cultivated end-to-end technical ownership across junior and cross-functional members.",
+      "situation": "Led a 5-person AI development team at FPT Software with varied backgrounds and initial motivation levels, tasked with building and shipping enterprise AI automation workflows alongside PMs, POs, and external partners.",
+      "tags": [
+        "leadership",
+        "servant-leadership",
+        "team-management",
+        "cross-functional",
+        "fpt-software"
+      ],
+      "task": "Align the team towards shared technical accountability, eliminate operational friction, and sustain reliable delivery momentum without top-down coercive management.",
+      "title": "Servant Leadership & Strengths-Based Task Alignment in Cross-Functional AI Delivery"
+    },
+    {
+      "action": "Built a deterministic regex parser to extract hierarchical statutory citations (articles, clauses, sections) into unique excerpt units and constructed an interconnected legal document graph. Implemented parent-document retrieval combined with hybrid lexical-dense ranking, resolving keyword confusion while feeding the LLM full contextual articles instead of isolated sentence fragments.",
+      "id": "story-hpt-legal-rag-graph",
+      "result": "Drastically improved retrieval relevance on statutory queries, successfully mitigated embedding contrast limitations in Vietnamese legal corpora, and provided a production-viable retrieval blueprint for enterprise legal R&D.",
+      "situation": "At HPT Corporation, off-the-shelf RAG pipelines failed on Vietnamese legal corpora due to nested statutory structures (law -> chapter -> article -> clause) and low semantic contrast among generalized dense embedding models, leading to retrieval inaccuracies and hallucinated legal advice.",
+      "task": "Design an accurate, context-preserving document segmentation and retrieval engine capable of surfacing exact legal clauses without losing parent statutory context.",
+      "title": "Hierarchical Legal Knowledge Graph & Hybrid RAG Architecture",
+      "tags": [
+        "rag",
+        "legal-nlp",
+        "hierarchical-chunking",
+        "parent-document-retrieval",
+        "hybrid-search",
+        "hpt-corporation"
+      ]
+    }
+  ]
 }
