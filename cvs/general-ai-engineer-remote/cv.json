@@ -1,0 +1,177 @@
+{
+  "awards": [
+    {
+      "date": "2024",
+      "summary": "Won 2nd Place out of competitive teams by engineering a multi-modal sarcasm detection pipeline on Vietnamese social media; conducted in-depth feature ablations demonstrating that intermediate encoder representations significantly outperform standard [CLS] embeddings by preserving subtle ironic nuances lost in deeper arithmetic transformations.",
+      "title": "2nd Place - UIT Data Science Challenge 2024"
+    }
+  ],
+  "certifications": [
+    {
+      "date": "2025",
+      "issuer": "NVIDIA",
+      "name": "Nvidia Certificate of Competency — AI for Anomaly Detection"
+    }
+  ],
+  "contact": {
+    "email": "ahndunn@gmail.com",
+    "github": "ahndunn",
+    "linkedin": "variphx",
+    "name": "Anh-Dung Huynh",
+    "phone": "+84 327150072"
+  },
+  "education": [
+    {
+      "dates": "Sept 2022 -- Sept 2025",
+      "degree": "B.S. in Computer Science",
+      "highlights": [
+        "2nd Place - UIT Data Science Challenge 2024"
+      ],
+      "institution": "University of Information Technology, VNU-HCM"
+    }
+  ],
+  "experience": [
+    {
+      "company": "FPT Software",
+      "location": "Vietnam",
+      "roles": [
+        {
+          "dates": "Sept 2025 -- Present",
+          "highlights": [
+            "Led a 5-person AI development team, collaborating with PM, PO, and external vendors across iterative delivery cycles to deploy enterprise AI automation systems.",
+            "Took end-to-end technical ownership of a production conversational workflow system automating internal workflows and structured ticket orchestration from architecture through cloud deployment.",
+            "Architected a multi-layer query routing engine combining LLM reasoning, semantic vector similarity, and deterministic rule matching to bypass redundant generative model invocations and optimize downstream processing.",
+            "Architected an asynchronous, message-driven backend with RabbitMQ to decouple external client adapters (e.g., MS Teams) from heavy inference workloads, eliminating synchronous HTTP connection timeouts through instant event acknowledgment and streamed ephemeral status updates.",
+            "Solo-designed an agentic orchestration platform in Java (Spring Boot) featuring a declarative dynamic tool-dependency graph that calculates shortest execution paths based on parameter availability, context history, and vector retrieval (Qdrant).",
+            "Enforced enterprise-grade reliability using Pydantic validation, structured exception hierarchies, distributed tracing, and centralized logging across Python and Java microservices."
+          ],
+          "title": "AI Engineer"
+        }
+      ]
+    },
+    {
+      "company": "HPT Corporation",
+      "location": "Ho Chi Minh City, Vietnam",
+      "roles": [
+        {
+          "dates": "Jan 2025 -- Jun 2025",
+          "highlights": [
+            "Spearheaded Legal NLP R&D, designing high-precision RAG pipelines and domain-adapted Named Entity Recognition (NER) models using PyTorch and Hugging Face transformers.",
+            "Architected hierarchical document segmentation down to granular statutory units (articles, clauses, sections) using a custom regex engine to extract cross-reference citations and construct interconnected legal document graphs.",
+            "Implemented Parent-Document Retrieval paired with hybrid search (lexical + dense) to overcome low semantic contrast and keyword confusion inherent in generalized embedding models on legal corpora.",
+            "Addressed acute domain class imbalance via rule-based synonym substitution augmentation, enhancing token-level classification stability on niche legal entities.",
+            "Benchmarked embedding architectures and vector representations, evaluating precision, recall, F1, and inference latency tradeoffs to guide production R&D strategy."
+          ],
+          "title": "AI Engineer Intern"
+        }
+      ]
+    }
+  ],
+  "hide_page_numbers": false,
+  "projects": [
+    {
+      "dates": "2025 -- Present",
+      "highlights": [
+        "Technologies: Java (Spring Boot), Python, Qdrant, Kafka, PostgreSQL, Redis",
+        "Solo-architected an enterprise agent orchestration engine in Java (Spring Boot) with an admin portal enabling dynamic tool declaration, typed parameter schemas, and input-output aliasing.",
+        "Modeled tool dependencies as dynamic directed graphs, computing optimal shortest execution paths (minimizing missing parameters) integrated with conversation history, user profiles, and vector retrieval (Qdrant).",
+        "Built a high-throughput event-driven microservices architecture using Spring Boot, Kafka, and Qdrant, accompanied by a lightweight Python service for asynchronous knowledge ingestion."
+      ],
+      "name": "Dynamic Tool-Orchestration & Graph Execution Platform"
+    },
+    {
+      "dates": "2025 -- Present",
+      "highlights": [
+        "Technologies: Python, LangChain, LangGraph, RabbitMQ, Milvus, Redis, Docker",
+        "Led technical development for a production AI conversational engine automating enterprise workflows and internal support ticket routing.",
+        "Designed a multi-tier routing pipeline combining deterministic matching, semantic vector search, and LLM reasoning to optimize response latency and token costs.",
+        "Decoupled system components with a message-driven RabbitMQ bus, ensuring resilient, non-blocking execution under heavy concurrency."
+      ],
+      "name": "Production Conversational Workflow & Ticket Orchestrator"
+    },
+    {
+      "dates": "2025 -- Present",
+      "highlights": [
+        "Technologies: Python, LangGraph, FastAPI, D-ID, Qdrant, LLM-as-a-Judge, Docker",
+        "Architected an interactive, real-time video simulation platform enabling insurance agents to practice client consultation through realistic conversational roleplay.",
+        "Integrated dynamic conversational state graphs via LangGraph with streaming avatar and synthetic speech services (D-ID), managing bi-directional turn-taking and low-latency interaction.",
+        "Implemented an automated evaluation pipeline utilizing LLM-as-a-judge against structured sales rubrics (objection handling, compliance, product knowledge) to deliver granular post-session scorecards and actionable coaching."
+      ],
+      "name": "AI Insurance Agent Mentoring Platform"
+    },
+    {
+      "dates": "2024",
+      "highlights": [
+        "Technologies: Python, PyTorch, ViSoBERT, CafeBERT, Hugging Face",
+        "Researched and implemented multi-modal sarcasm detection on Vietnamese social media, achieving 2nd Place in the UIT Data Science Challenge 2024.",
+        "Conducted extensive ablation studies on intermediate layer representations across ViSoBERT, CafeBERT, and GPT backbones, discovering that intermediate encoder representations with max pooling capture multi-layered figurative semantics significantly better than vanilla [CLS] token pooling."
+      ],
+      "name": "Multi-Modal Sarcasm Detection & LLM Feature Ablation",
+      "url": "https://github.com/ahndunn"
+    }
+  ],
+  "skills": [
+    {
+      "category": "AI & LLM Frameworks",
+      "items": [
+        "LangChain",
+        "LangGraph",
+        "Agentic Orchestration",
+        "RAG & Document Graphs",
+        "LLM-as-a-Judge",
+        "NLP",
+        "Multimodal AI (D-ID, ElevenLabs, Whisper)",
+        "Pydantic",
+        "Vector Search",
+        "PyTorch",
+        "Hugging Face",
+        "Transformers"
+      ]
+    },
+    {
+      "category": "Programming Languages",
+      "items": [
+        "Python",
+        "Java",
+        "Rust",
+        "SQL",
+        "FastAPI",
+        "Spring Boot"
+      ]
+    },
+    {
+      "category": "Databases & Message Queues",
+      "items": [
+        "Milvus",
+        "Qdrant",
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "SQLite",
+        "Redis",
+        "Kafka",
+        "RabbitMQ"
+      ]
+    },
+    {
+      "category": "Infrastructure & DevOps",
+      "items": [
+        "Docker",
+        "Docker Compose",
+        "Azure",
+        "VPS",
+        "GitLab CI/CD",
+        "GitHub Actions"
+      ]
+    },
+    {
+      "category": "Languages",
+      "items": [
+        "Vietnamese (Native)",
+        "English (Proficient (TOEIC 980 LR, 320 SW))",
+        "French (Independent (DELF B2))"
+      ]
+    }
+  ],
+  "summary": "AI Engineer specializing in Agentic Orchestration (LangGraph, Spring Boot), advanced RAG (hierarchical chunking, document graphs), and production-grade asynchronous backends (Python, Java, RabbitMQ, Kafka, modern vector databases). Proven track record leading cross-functional teams and deploying enterprise conversational systems, real-time multimodal roleplay simulations, and high-precision legal NLP pipelines."
+}

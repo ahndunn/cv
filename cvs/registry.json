@@ -31,6 +31,24 @@
       ],
       "path": "cvs/momo-ai-engineer",
       "updated_at": "2026-09-26T07:13:00+07:00"
+    },
+    {
+      "slug": "general-ai-engineer-remote",
+      "role": "General AI Engineer (Location Agnostic / Remote)",
+      "tags": [
+        "general",
+        "ai-engineer",
+        "llm",
+        "agentic-orchestration",
+        "backend",
+        "nlp",
+        "python",
+        "java",
+        "remote",
+        "location-agnostic"
+      ],
+      "path": "cvs/general-ai-engineer-remote",
+      "updated_at": "2026-10-07T18:38:00+07:00"
     }
   ]
 }
